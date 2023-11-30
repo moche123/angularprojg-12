@@ -1,0 +1,18 @@
+<h1>PERSONAJES</h1>
+
+<div class="characteres-container">
+    <div class="characteres-container__item text-center" *ngFor="let character of characteres$ | async">
+      <h4>
+        {{character.name.length < 12 ? character.name : character.name | slice:0:12 }}
+      </h4>
+      <img [src]="character.image" [alt]="character.name" appImgBroken/>
+      <p class="mt-1 mb-0 text-success status">
+
+          {{ character.status }}
+      </p>
+      <a class="btn btn-primary" (click)="addFavorite(character)">
+        <!-- <i class="fa-solid fa-add"></i> -->
+        <i class="fa-solid fa-address-book"></i>
+      </a>
+    </div>
+</div>
