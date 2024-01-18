@@ -48,7 +48,7 @@ export class PagesService {
     return this._http.get(url)
       .pipe(
         map((response: any) => {
-          return response.favoritos
+          return response.favorites
         })
       )
   }
