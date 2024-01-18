@@ -12,6 +12,8 @@ import Swal from 'sweetalert2';
 })
 export class CharacteresComponent implements OnInit {
 
+  swalObj = Swal;
+
   public characteres$: Observable<ICharacter[]> = new Observable(); 
   
   constructor(
@@ -33,11 +35,11 @@ export class CharacteresComponent implements OnInit {
     }
 
     this._pagesService.addFavorite(body).subscribe(res => {
-      console.log(res)
+      // console.log(res)
       if(res.ok === true ){
         this._router.navigateByUrl('/pages/favorites');
       }else{
-        Swal.fire(
+        this.swalObj.fire(
           'Oops',
           res.msg || 'Error genérico',
           'error'

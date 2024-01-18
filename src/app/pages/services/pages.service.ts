@@ -22,15 +22,14 @@ export class PagesService {
 
     return this._http.post<any>(url, body)
       .pipe(
-        // map(resp => {
-        //   if(resp.error){
-        //     throw new Error('No condition achieved');
-        //   }
-        //   return resp.ok
-        // }),
+        map(resp => {
+          if(resp.error){
+            throw new Error('No condition achieved');
+          }
+          return resp
+        }),
         catchError(err => {
-          // alert(err.error.msg).
-          
+                    
           Swal.fire(
             'Oops',
             err?.error?.msg || 'Error no condition achieved',
